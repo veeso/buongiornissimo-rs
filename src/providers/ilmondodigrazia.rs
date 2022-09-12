@@ -153,6 +153,7 @@ mod test {
     use serial_test::serial;
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_birthday_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -163,6 +164,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_goodmorning_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -173,6 +175,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_weekday_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -213,6 +216,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_christmas_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -223,6 +227,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_afternoon_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -233,6 +238,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_greeting_giovedi_grasso_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -243,6 +249,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_greeting_pentecoste_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -253,6 +260,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_greeting_festa_della_repubblica_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -263,6 +271,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_greeting_corpus_domini_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -273,6 +282,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_greeting_sacro_cuore_di_gesu_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -283,6 +293,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_greeting_ferragosto_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -293,6 +304,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_greeting_ognissanti_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -303,6 +315,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_greeting_defunti_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -313,6 +326,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_greeting_halloween_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -323,6 +337,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_greeting_immacolata_concenzione_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -333,6 +348,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_greeting_vigilia_di_natale_images() {
         assert!(!IlMondoDiGrazia::default()
@@ -343,6 +359,7 @@ mod test {
     }
 
     #[tokio::test]
+    #[cfg(not(feature = "github-ci"))]
     #[serial]
     async fn should_get_greeting_natale_images() {
         assert!(!IlMondoDiGrazia::default()
