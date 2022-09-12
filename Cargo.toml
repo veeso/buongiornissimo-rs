@@ -1,0 +1,45 @@
+[package]
+name = "buongiornissimo-rs"
+version = "0.1.0"
+authors = ["Christian Visintin <christian.visintin1997@gmail.com>"]
+edition = "2021"
+categories = ["web-programming"]
+description = "Scrapes for the best Italian boomer flavoured images"
+documentation = "https://docs.rs/buongiornissimo-rs"
+homepage = "https://github.com/veeso/buongiornissimo-rs"
+include = ["src/**/*", "LICENSE", "README.md", "CHANGELOG.md"]
+keywords = ["boomer", "buongiornissmo", "scraper"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/veeso/buongiornissimo-rs"
+
+[dependencies]
+async-trait = "^0.1"
+bdays = { version = "^0.1", optional = true }
+chrono = "^0.4"
+const_format = "^0.2"
+log = "^0.4"
+reqwest = "^0.11" 
+scraper = "^0.13"
+thiserror = "^1.0.0"
+url = "^2.2"
+
+[dev-dependencies]
+anyhow = "^1"
+pretty_assertions = "^1.2.1"
+open = "^3.0"
+rand = "0.8.5"
+serial_test = "^0.9"
+tokio = { version = "^1.20", features = [ "full" ] }
+tracing = "^0.1"
+tracing-subscriber = "^0.2"
+
+[features]
+default = [ "moveable-feasts" ]
+moveable-feasts = [ "bdays" ]
+github-ci = [ ]
+no-log = [ "log/max_level_off" ]
+
+[[example]]
+name = "buongiornissimo"
+path = "examples/buongiornissimo.rs"
