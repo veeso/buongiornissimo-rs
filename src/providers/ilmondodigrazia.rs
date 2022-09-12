@@ -39,6 +39,7 @@ const VIGILIA_URL: &str = concatcp!(
 );
 const BUON_NATALE_URL: &str = concatcp!(BASE_URL, "/frasi-di-buon-natale-immagini-da-condividere");
 
+/// Buongiornissimo provider which scrapes images from <https://ilmondodigrazia.com>
 #[derive(Default)]
 pub struct IlMondoDiGrazia;
 
@@ -84,12 +85,16 @@ impl IlMondoDiGrazia {
             | Greeting::Epifania
             | Greeting::MartediGrasso
             | Greeting::MercolediCeneri
+            | Greeting::SanValentino
+            | Greeting::FestaDelleDonne
+            | Greeting::DomenicaDellePalme
             | Greeting::Pasqua
             | Greeting::Pasquetta
             | Greeting::Liberazione
             | Greeting::FestaDeiLavoratori
             | Greeting::Ascensione
             | Greeting::SantissimaTrinita
+            | Greeting::SantoStefano
             | Greeting::CuoreImmacolatoDiMaria => Err(ScrapeError::UnsupportedGreeting),
         }
     }
@@ -391,6 +396,31 @@ mod test {
             ScrapeError::UnsupportedGreeting
         );
     }
+
+    #[tokio::test]
+    async fn should_be_unsupported_greeting_valentino() {
+        assert_eq!(
+            IlMondoDiGrazia::default()
+                .scrape(Greeting::SanValentino)
+                .await
+                .err()
+                .unwrap(),
+            ScrapeError::UnsupportedGreeting
+        );
+    }
+
+    #[tokio::test]
+    async fn should_be_unsupported_greeting_donne() {
+        assert_eq!(
+            IlMondoDiGrazia::default()
+                .scrape(Greeting::FestaDelleDonne)
+                .await
+                .err()
+                .unwrap(),
+            ScrapeError::UnsupportedGreeting
+        );
+    }
+
     #[tokio::test]
     async fn should_be_unsupported_greeting_martedi_grasso() {
         assert_eq!(
@@ -413,6 +443,19 @@ mod test {
             ScrapeError::UnsupportedGreeting
         );
     }
+
+    #[tokio::test]
+    async fn should_be_unsupported_greeting_palme() {
+        assert_eq!(
+            IlMondoDiGrazia::default()
+                .scrape(Greeting::DomenicaDellePalme)
+                .await
+                .err()
+                .unwrap(),
+            ScrapeError::UnsupportedGreeting
+        );
+    }
+
     #[tokio::test]
     async fn should_be_unsupported_greeting_pasqua() {
         assert_eq!(
@@ -486,6 +529,18 @@ mod test {
         assert_eq!(
             IlMondoDiGrazia::default()
                 .scrape(Greeting::FestaDeiLavoratori)
+                .await
+                .err()
+                .unwrap(),
+            ScrapeError::UnsupportedGreeting
+        );
+    }
+
+    #[tokio::test]
+    async fn should_be_unsupported_greeting_santostefano() {
+        assert_eq!(
+            IlMondoDiGrazia::default()
+                .scrape(Greeting::SantoStefano)
                 .await
                 .err()
                 .unwrap(),

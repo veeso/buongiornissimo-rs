@@ -15,7 +15,7 @@
 //! ### Add buongiornissimo-rs to your Cargo.toml 🦀
 //!
 //! ```toml
-//! buongiornissimo-rs = "^0.1.0"
+//! buongiornissimo-rs = "^0.2.0"
 //! ```
 //!
 //! Supported features are:
@@ -61,7 +61,7 @@ pub mod moveable_feasts;
 mod providers;
 
 // exports
-pub use providers::IlMondoDiGrazia;
+pub use providers::{BuongiornissimoCaffe, IlMondoDiGrazia};
 
 /// Describes the Greeting type
 #[derive(Debug, Copy, Clone, Eq, PartialEq)]
@@ -75,9 +75,12 @@ pub enum Greeting {
     // feasts
     Capodanno,
     Epifania,
+    SanValentino,
     GiovediGrasso,
     MartediGrasso,
     MercolediCeneri,
+    FestaDelleDonne,
+    DomenicaDellePalme,
     Pasqua,
     Pasquetta,
     Liberazione,
@@ -99,6 +102,7 @@ pub enum Greeting {
     ImmacolataConcenzione,
     VigiliaDiNatale,
     Natale,
+    SantoStefano,
 }
 
 /// Scrape trait result
@@ -142,6 +146,8 @@ pub fn greeting_of_the_day(date: NaiveDate, use_weekday: bool) -> Greeting {
     match date {
         date if date.month() == 1 && date.day() == 1 => Greeting::Capodanno,
         date if date.month() == 1 && date.day() == 6 => Greeting::Epifania,
+        date if date.month() == 2 && date.day() == 14 => Greeting::SanValentino,
+        date if date.month() == 3 && date.day() == 8 => Greeting::FestaDelleDonne,
         #[cfg(feature = "moveable-feasts")]
         date if date == moveable_feasts::giovedi_grasso_date(date.year()) => {
             Greeting::GiovediGrasso
@@ -153,6 +159,10 @@ pub fn greeting_of_the_day(date: NaiveDate, use_weekday: bool) -> Greeting {
         #[cfg(feature = "moveable-feasts")]
         date if date == moveable_feasts::mercoled_ceneri_date(date.year()) => {
             Greeting::MercolediCeneri
+        }
+        #[cfg(feature = "moveable-feasts")]
+        date if date == moveable_feasts::domenica_delle_palme_date(date.year()) => {
+            Greeting::DomenicaDellePalme
         }
         #[cfg(feature = "moveable-feasts")]
         date if date == moveable_feasts::easter_date(date.year()) => Greeting::Pasqua,
@@ -186,6 +196,7 @@ pub fn greeting_of_the_day(date: NaiveDate, use_weekday: bool) -> Greeting {
         date if date.month() == 12 && date.day() == 8 => Greeting::ImmacolataConcenzione,
         date if date.month() == 12 && date.day() == 24 => Greeting::VigiliaDiNatale,
         date if date.month() == 12 && date.day() == 25 => Greeting::Natale,
+        date if date.month() == 12 && date.day() == 26 => Greeting::SantoStefano,
         date if use_weekday => Greeting::BuonGiornoWeekday(date.weekday()),
         _ => Greeting::BuonGiorno,
     }
@@ -230,6 +241,22 @@ mod test {
     }
 
     #[test]
+    fn should_get_greeting_of_the_day_san_valentino() {
+        assert_eq!(
+            greeting_of_the_day(NaiveDate::from_ymd(2022, 2, 14), true),
+            Greeting::SanValentino
+        );
+    }
+
+    #[test]
+    fn should_get_greeting_of_the_day_festadonne() {
+        assert_eq!(
+            greeting_of_the_day(NaiveDate::from_ymd(2022, 3, 8), true),
+            Greeting::FestaDelleDonne
+        );
+    }
+
+    #[test]
     #[cfg(feature = "moveable-feasts")]
     fn should_get_greeting_of_the_day_giovedi_grasso() {
         assert_eq!(
@@ -253,6 +280,15 @@ mod test {
         assert_eq!(
             greeting_of_the_day(NaiveDate::from_ymd(2023, 2, 22), true),
             Greeting::MercolediCeneri
+        );
+    }
+
+    #[test]
+    #[cfg(feature = "moveable-feasts")]
+    fn should_get_greeting_of_the_day_palme() {
+        assert_eq!(
+            greeting_of_the_day(NaiveDate::from_ymd(2023, 4, 2), true),
+            Greeting::DomenicaDellePalme
         );
     }
 
@@ -396,6 +432,14 @@ mod test {
         assert_eq!(
             greeting_of_the_day(NaiveDate::from_ymd(2023, 12, 25), true),
             Greeting::Natale
+        );
+    }
+
+    #[test]
+    fn should_get_greeting_of_the_day_santostefano() {
+        assert_eq!(
+            greeting_of_the_day(NaiveDate::from_ymd(2023, 12, 26), true),
+            Greeting::SantoStefano
         );
     }
 }

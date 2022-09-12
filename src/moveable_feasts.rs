@@ -12,6 +12,14 @@ pub fn easter_date(year: i32) -> NaiveDate {
     easter_naive_date(year).unwrap()
 }
 
+/// Return "domenica delle palme" date
+///
+/// panics if year is < 1582
+pub fn domenica_delle_palme_date(year: i32) -> NaiveDate {
+    let easter = easter_date(year);
+    easter - chrono::Duration::days(7)
+}
+
 /// Return pasquetta date
 ///
 /// panics if year is < 1582
@@ -102,6 +110,14 @@ mod test {
     #[test]
     fn should_calc_easter_date() {
         assert_eq!(easter_date(2023), NaiveDate::from_ymd(2023, 4, 9));
+    }
+
+    #[test]
+    fn should_calc_palme_date() {
+        assert_eq!(
+            domenica_delle_palme_date(2023),
+            NaiveDate::from_ymd(2023, 4, 2)
+        );
     }
 
     #[test]

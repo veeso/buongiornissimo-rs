@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">Developed by <a href="https://veeso.github.io/" target="_blank">@veeso</a></p>
-<p align="center">Current version: 0.1.0 (12/09/2022)</p>
+<p align="center">Current version: 0.2.0 (12/09/2022)</p>
 
 <p align="center">
   <a href="https://opensource.org/licenses/MIT"
@@ -95,7 +95,7 @@ It supports different buongiornissimo providers to scrape the images from. It su
 ### Add buongiornissimo-rs to your Cargo.toml 🦀
 
 ```toml
-buongiornissimo-rs = "^0.1.0"
+buongiornissimo-rs = "^0.2.0"
 ```
 
 Supported features are:
@@ -117,6 +117,11 @@ async fn main() -> anyhow::Result<()> {
     Ok(())
 }
 ```
+
+Currently these providers are supported:
+
+- BuongiornissimoCaffe <https://www.buongiornissimocaffe.it>
+- IlMondoDiGrazia <https://ilmondodigrazia.com>
 
 ### Examples 🔍
 
