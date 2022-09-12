@@ -8,13 +8,11 @@
 <p align="center">
   <a href="#get-started-">Get started</a>
   ·
-  <a href="https://github.com/veeso/buongiornissimo-rs" target="_blank">Standard Library</a>
-  ·
   <a href="https://docs.rs/buongiornissimo-rs" target="_blank">Documentation</a>
 </p>
 
 <p align="center">Developed by <a href="https://veeso.github.io/" target="_blank">@veeso</a></p>
-<p align="center">Current version: 0.1.0 (10/09/2022)</p>
+<p align="center">Current version: 0.1.0 (12/09/2022)</p>
 
 <p align="center">
   <a href="https://opensource.org/licenses/MIT"
