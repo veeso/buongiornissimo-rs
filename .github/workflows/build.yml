@@ -20,7 +20,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: test
-          args: --features github-ci,moveable-feasts --no-fail-fast
+          args: --lib --features github-ci,moveable-feasts --no-fail-fast
         env:
           RUST_LOG: trace
       - name: Format
