@@ -64,7 +64,7 @@ mod providers;
 pub use providers::{BuongiornissimoCaffe, IlMondoDiGrazia};
 
 /// Describes the Greeting type
-#[derive(Debug, Copy, Clone, Eq, PartialEq)]
+#[derive(Debug, Copy, Clone, Eq, PartialEq, Hash)]
 pub enum Greeting {
     BuonGiorno,
     /// Buongiorno based on the weekday
@@ -211,7 +211,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_ordinary() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2022, 12, 5), false),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2022, 12, 5).unwrap(), false),
             Greeting::BuonGiorno
         );
     }
@@ -219,7 +219,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_ordinary_weekday() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2022, 12, 5), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2022, 12, 5).unwrap(), true),
             Greeting::BuonGiornoWeekday(chrono::Weekday::Mon)
         );
     }
@@ -227,7 +227,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_capodanno() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2022, 1, 1), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2022, 1, 1).unwrap(), true),
             Greeting::Capodanno
         );
     }
@@ -235,7 +235,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_epifania() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2022, 1, 6), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2022, 1, 6).unwrap(), true),
             Greeting::Epifania
         );
     }
@@ -243,7 +243,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_san_valentino() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2022, 2, 14), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2022, 2, 14).unwrap(), true),
             Greeting::SanValentino
         );
     }
@@ -251,7 +251,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_festadonne() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2022, 3, 8), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2022, 3, 8).unwrap(), true),
             Greeting::FestaDelleDonne
         );
     }
@@ -260,7 +260,7 @@ mod test {
     #[cfg(feature = "moveable-feasts")]
     fn should_get_greeting_of_the_day_giovedi_grasso() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 2, 16), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 2, 16).unwrap(), true),
             Greeting::GiovediGrasso
         );
     }
@@ -269,7 +269,7 @@ mod test {
     #[cfg(feature = "moveable-feasts")]
     fn should_get_greeting_of_the_day_martedi_grasso() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 2, 21), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 2, 21).unwrap(), true),
             Greeting::MartediGrasso
         );
     }
@@ -278,7 +278,7 @@ mod test {
     #[cfg(feature = "moveable-feasts")]
     fn should_get_greeting_of_the_day_ceneri() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 2, 22), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 2, 22).unwrap(), true),
             Greeting::MercolediCeneri
         );
     }
@@ -287,7 +287,7 @@ mod test {
     #[cfg(feature = "moveable-feasts")]
     fn should_get_greeting_of_the_day_palme() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 4, 2), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 4, 2).unwrap(), true),
             Greeting::DomenicaDellePalme
         );
     }
@@ -296,7 +296,7 @@ mod test {
     #[cfg(feature = "moveable-feasts")]
     fn should_get_greeting_of_the_day_pasqua() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 4, 9), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 4, 9).unwrap(), true),
             Greeting::Pasqua
         );
     }
@@ -305,7 +305,7 @@ mod test {
     #[cfg(feature = "moveable-feasts")]
     fn should_get_greeting_of_the_day_pasquetta() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 4, 10), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 4, 10).unwrap(), true),
             Greeting::Pasquetta
         );
     }
@@ -314,7 +314,7 @@ mod test {
     #[cfg(feature = "moveable-feasts")]
     fn should_get_greeting_of_the_day_ascensione() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 5, 21), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 5, 21).unwrap(), true),
             Greeting::Ascensione
         );
     }
@@ -323,7 +323,7 @@ mod test {
     #[cfg(feature = "moveable-feasts")]
     fn should_get_greeting_of_the_day_trinita() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 6, 4), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 6, 4).unwrap(), true),
             Greeting::SantissimaTrinita
         );
     }
@@ -332,7 +332,7 @@ mod test {
     #[cfg(feature = "moveable-feasts")]
     fn should_get_greeting_of_the_day_corpus_domini() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 6, 11), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 6, 11).unwrap(), true),
             Greeting::CorpusDomini
         );
     }
@@ -341,7 +341,7 @@ mod test {
     #[cfg(feature = "moveable-feasts")]
     fn should_get_greeting_of_the_day_sacro_cuore() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 6, 16), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 6, 16).unwrap(), true),
             Greeting::SacroCuoreDiGesu
         );
     }
@@ -350,7 +350,7 @@ mod test {
     #[cfg(feature = "moveable-feasts")]
     fn should_get_greeting_of_the_day_cuore_immacolato() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 6, 17), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 6, 17).unwrap(), true),
             Greeting::CuoreImmacolatoDiMaria
         );
     }
@@ -358,7 +358,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_repubblica() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 6, 2), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 6, 2).unwrap(), true),
             Greeting::FestaDellaRepubblica
         );
     }
@@ -366,7 +366,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_25_aprile() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 4, 25), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 4, 25).unwrap(), true),
             Greeting::Liberazione
         );
     }
@@ -374,7 +374,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_1_maggio() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 5, 1), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 5, 1).unwrap(), true),
             Greeting::FestaDeiLavoratori
         );
     }
@@ -382,7 +382,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_ferragosto() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 8, 15), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 8, 15).unwrap(), true),
             Greeting::Ferragosto
         );
     }
@@ -390,7 +390,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_halloween() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 10, 31), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 10, 31).unwrap(), true),
             Greeting::Halloween
         );
     }
@@ -398,7 +398,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_ognissanti() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 11, 1), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 11, 1).unwrap(), true),
             Greeting::Ognissanti
         );
     }
@@ -406,7 +406,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_defunti() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 11, 2), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 11, 2).unwrap(), true),
             Greeting::Defunti
         );
     }
@@ -414,7 +414,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_immacolata() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 12, 8), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 12, 8).unwrap(), true),
             Greeting::ImmacolataConcenzione
         );
     }
@@ -422,7 +422,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_vigilia() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 12, 24), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 12, 24).unwrap(), true),
             Greeting::VigiliaDiNatale
         );
     }
@@ -430,7 +430,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_natale() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 12, 25), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 12, 25).unwrap(), true),
             Greeting::Natale
         );
     }
@@ -438,7 +438,7 @@ mod test {
     #[test]
     fn should_get_greeting_of_the_day_santostefano() {
         assert_eq!(
-            greeting_of_the_day(NaiveDate::from_ymd(2023, 12, 26), true),
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 12, 26).unwrap(), true),
             Greeting::SantoStefano
         );
     }

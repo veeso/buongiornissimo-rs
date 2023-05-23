@@ -109,65 +109,89 @@ mod test {
 
     #[test]
     fn should_calc_easter_date() {
-        assert_eq!(easter_date(2023), NaiveDate::from_ymd(2023, 4, 9));
+        assert_eq!(
+            easter_date(2023),
+            NaiveDate::from_ymd_opt(2023, 4, 9).unwrap()
+        );
     }
 
     #[test]
     fn should_calc_palme_date() {
         assert_eq!(
             domenica_delle_palme_date(2023),
-            NaiveDate::from_ymd(2023, 4, 2)
+            NaiveDate::from_ymd_opt(2023, 4, 2).unwrap()
         );
     }
 
     #[test]
     fn should_calc_pasquetta_date() {
-        assert_eq!(pasquetta_date(2023), NaiveDate::from_ymd(2023, 4, 10));
+        assert_eq!(
+            pasquetta_date(2023),
+            NaiveDate::from_ymd_opt(2023, 4, 10).unwrap()
+        );
     }
 
     #[test]
     fn should_calc_giovedi_grasso_date() {
-        assert_eq!(giovedi_grasso_date(2023), NaiveDate::from_ymd(2023, 2, 16));
+        assert_eq!(
+            giovedi_grasso_date(2023),
+            NaiveDate::from_ymd_opt(2023, 2, 16).unwrap()
+        );
     }
 
     #[test]
     fn should_calc_martedi_grasso_date() {
-        assert_eq!(martedi_grasso_date(2023), NaiveDate::from_ymd(2023, 2, 21));
+        assert_eq!(
+            martedi_grasso_date(2023),
+            NaiveDate::from_ymd_opt(2023, 2, 21).unwrap()
+        );
     }
 
     #[test]
     fn should_calc_mercoledi_ceneri_date() {
-        assert_eq!(mercoled_ceneri_date(2023), NaiveDate::from_ymd(2023, 2, 22));
+        assert_eq!(
+            mercoled_ceneri_date(2023),
+            NaiveDate::from_ymd_opt(2023, 2, 22).unwrap()
+        );
     }
 
     #[test]
     fn should_calc_ascensione_date() {
-        assert_eq!(ascensione_date(2023), NaiveDate::from_ymd(2023, 5, 21));
+        assert_eq!(
+            ascensione_date(2023),
+            NaiveDate::from_ymd_opt(2023, 5, 21).unwrap()
+        );
     }
 
     #[test]
     fn should_calc_pentecoste_date() {
-        assert_eq!(pentecoste_date(2023), NaiveDate::from_ymd(2023, 5, 28));
+        assert_eq!(
+            pentecoste_date(2023),
+            NaiveDate::from_ymd_opt(2023, 5, 28).unwrap()
+        );
     }
 
     #[test]
     fn should_calc_santissima_trinita_date() {
         assert_eq!(
             santissima_trinita_date(2023),
-            NaiveDate::from_ymd(2023, 6, 4)
+            NaiveDate::from_ymd_opt(2023, 6, 4).unwrap()
         );
     }
 
     #[test]
     fn should_calc_corpus_domini_date() {
-        assert_eq!(corpus_domini_date(2023), NaiveDate::from_ymd(2023, 6, 11));
+        assert_eq!(
+            corpus_domini_date(2023),
+            NaiveDate::from_ymd_opt(2023, 6, 11).unwrap()
+        );
     }
 
     #[test]
     fn should_calc_sacro_cuore_di_gesu_date() {
         assert_eq!(
             sacro_cuore_di_gesu_date(2023),
-            NaiveDate::from_ymd(2023, 6, 16)
+            NaiveDate::from_ymd_opt(2023, 6, 16).unwrap()
         );
     }
 
@@ -175,7 +199,7 @@ mod test {
     fn should_calc_cuore_immacolato_di_maria_date() {
         assert_eq!(
             cuore_immacolato_di_maria_date(2023),
-            NaiveDate::from_ymd(2023, 6, 17)
+            NaiveDate::from_ymd_opt(2023, 6, 17).unwrap()
         );
     }
 }

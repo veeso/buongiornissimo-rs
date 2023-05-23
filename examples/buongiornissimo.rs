@@ -18,7 +18,7 @@ fn get_provider() -> Box<dyn Scrape> {
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     tracing_subscriber::fmt::init();
-    let motd = buongiornissimo_rs::greeting_of_the_day(Local::today().naive_local(), true);
+    let motd = buongiornissimo_rs::greeting_of_the_day(Local::now().date_naive(), true);
     let urls = get_provider().scrape(motd).await?;
     let url = choice(&urls);
     open::that(url.to_string())?;

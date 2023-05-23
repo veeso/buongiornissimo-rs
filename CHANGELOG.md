@@ -1,10 +1,18 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [0.2.1](#021)
   - [0.2.0](#020)
   - [0.1.0](#010)
 
 ---
+
+## 0.2.1
+
+Released on 23/05/2023
+
+- Derive `Hash` for greeting.
+- Deps updated
 
 ## 0.2.0
 
