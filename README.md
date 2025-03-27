@@ -22,7 +22,7 @@
   /></a>
   <a href="https://github.com/veeso/buongiornissimo-rs/stargazers"
     ><img
-      src="https://img.shields.io/github/stars/veeso/buongiornissimo-rs.svg"
+      src="https://img.shields.io/github/stars/veeso/buongiornissimo-rs.svg?style=flat&logo=github"
       alt="Repo stars"
   /></a>
   <a href="https://crates.io/crates/buongiornissimo-rs"
@@ -42,9 +42,9 @@
   /></a>
 </p>
 <p align="center">
-  <a href="https://github.com/veeso/buongiornissimo-rs/actions"
+  <a href="https://github.com/veeso/buongiornissimo-rs/actions/workflows/build.yml"
     ><img
-      src="https://github.com/veeso/buongiornissimo-rs/workflows/Build/badge.svg"
+      src="https://github.com/veeso/buongiornissimo-rs/actions/workflows/build.yml/badge.svg"
       alt="Build CI"
   /></a>
   <a href="https://coveralls.io/github/veeso/buongiornissimo-rs"
