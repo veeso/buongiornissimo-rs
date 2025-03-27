@@ -2,14 +2,14 @@
 //!
 //! This provider provides images from <https://www.buongiornissimocaffe.it/>
 
-use const_format::concatcp;
 use std::str::FromStr;
-
-use super::{Greeting, Scrape, ScrapeError, ScrapeResult, Url};
 
 use async_trait::async_trait;
 use chrono::Weekday;
+use const_format::concatcp;
 use scraper::{Html, Selector};
+
+use super::{Greeting, Scrape, ScrapeError, ScrapeResult, Url};
 
 const BASE_URL: &str = "https://www.buongiornissimocaffe.it/category";
 const BUONGIORNO_URL: &str = concatcp!(BASE_URL, "/immagini-buongiorno/");
@@ -154,228 +154,282 @@ impl Scrape for BuongiornissimoCaffe {
 #[cfg(test)]
 mod test {
 
-    use super::*;
-
     use pretty_assertions::assert_eq;
+
+    use super::*;
 
     #[tokio::test]
 
     async fn should_get_goodmorning_images() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::BuonGiorno)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::BuonGiorno)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_get_weekday_images() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::BuonGiornoWeekday(Weekday::Mon))
-            .await
-            .unwrap()
-            .is_empty());
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::BuonGiornoWeekday(Weekday::Tue))
-            .await
-            .unwrap()
-            .is_empty());
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::BuonGiornoWeekday(Weekday::Wed))
-            .await
-            .unwrap()
-            .is_empty());
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::BuonGiornoWeekday(Weekday::Thu))
-            .await
-            .unwrap()
-            .is_empty());
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::BuonGiornoWeekday(Weekday::Fri))
-            .await
-            .unwrap()
-            .is_empty());
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::BuonGiornoWeekday(Weekday::Sat))
-            .await
-            .unwrap()
-            .is_empty());
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::BuonGiornoWeekday(Weekday::Sun))
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::BuonGiornoWeekday(Weekday::Mon))
+                .await
+                .unwrap()
+                .is_empty()
+        );
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::BuonGiornoWeekday(Weekday::Tue))
+                .await
+                .unwrap()
+                .is_empty()
+        );
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::BuonGiornoWeekday(Weekday::Wed))
+                .await
+                .unwrap()
+                .is_empty()
+        );
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::BuonGiornoWeekday(Weekday::Thu))
+                .await
+                .unwrap()
+                .is_empty()
+        );
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::BuonGiornoWeekday(Weekday::Fri))
+                .await
+                .unwrap()
+                .is_empty()
+        );
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::BuonGiornoWeekday(Weekday::Sat))
+                .await
+                .unwrap()
+                .is_empty()
+        );
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::BuonGiornoWeekday(Weekday::Sun))
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_buona_notte() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::BuonaNotte)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::BuonaNotte)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_capodanno() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::Capodanno)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::Capodanno)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_epifania() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::Epifania)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::Epifania)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_san_valentino() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::SanValentino)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::SanValentino)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_giovedi_grasso() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::GiovediGrasso)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::GiovediGrasso)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_martedi_grasso() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::MartediGrasso)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::MartediGrasso)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_festa_delle_donne() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::FestaDelleDonne)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::FestaDelleDonne)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_domenica_delle_palme() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::DomenicaDellePalme)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::DomenicaDellePalme)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_pasqua() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::Pasqua)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::Pasqua)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_pasquetta() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::Pasquetta)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::Pasquetta)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_liberazione() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::Liberazione)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::Liberazione)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_festa_dei_lavoratori() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::FestaDeiLavoratori)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::FestaDeiLavoratori)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_halloween() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::Halloween)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::Halloween)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_ognissanti() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::Ognissanti)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::Ognissanti)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_defunti() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::Defunti)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::Defunti)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_immacolata_concenzione() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::ImmacolataConcenzione)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::ImmacolataConcenzione)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_vigilia_di_natale() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::VigiliaDiNatale)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::VigiliaDiNatale)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_natale() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::Natale)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::Natale)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]
     async fn should_scrape_for_greeting_santo_stefano() {
-        assert!(!BuongiornissimoCaffe::default()
-            .scrape(Greeting::SantoStefano)
-            .await
-            .unwrap()
-            .is_empty());
+        assert!(
+            !BuongiornissimoCaffe::default()
+                .scrape(Greeting::SantoStefano)
+                .await
+                .unwrap()
+                .is_empty()
+        );
     }
 
     #[tokio::test]

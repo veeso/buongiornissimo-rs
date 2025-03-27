@@ -15,7 +15,7 @@
 //! ### Add buongiornissimo-rs to your Cargo.toml 🦀
 //!
 //! ```toml
-//! buongiornissimo-rs = "^0.2.0"
+//! buongiornissimo-rs = "^0.3"
 //! ```
 //!
 //! Supported features are:
@@ -26,13 +26,13 @@
 //! ### Scrape for buongiornissimo ☕
 //!
 //! ```rust
-//! use buongiornissimo_rs::{IlMondoDiGrazia, Scrape};
+//! use buongiornissimo_rs::{BuongiornissimoCaffe, Scrape};
 //! use chrono::Local;
 //!
 //! #[tokio::main]
 //! async fn main() -> anyhow::Result<()> {
 //!     let motd = buongiornissimo_rs::greeting_of_the_day(Local::today().naive_local(), true);
-//!     let urls = IlMondoDiGrazia::default().scrape(motd).await?;
+//!     let urls = BuongiornissimoCaffe::default().scrape(motd).await?;
 //!     // Do whatever you want with the scraped images...
 //!     Ok(())
 //! }
@@ -48,7 +48,7 @@
 )]
 
 #[macro_use]
-extern crate log;
+extern crate tracing;
 
 use async_trait::async_trait;
 use chrono::NaiveDate;
@@ -61,7 +61,7 @@ pub mod moveable_feasts;
 mod providers;
 
 // exports
-pub use providers::{BuongiornissimoCaffe, IlMondoDiGrazia};
+pub use providers::BuongiornissimoCaffe;
 
 /// Describes the Greeting type
 #[derive(Debug, Copy, Clone, Eq, PartialEq, Hash)]
@@ -204,9 +204,9 @@ pub fn greeting_of_the_day(date: NaiveDate, use_weekday: bool) -> Greeting {
 
 #[cfg(test)]
 mod test {
-    use super::*;
-
     use pretty_assertions::assert_eq;
+
+    use super::*;
 
     #[test]
     fn should_get_greeting_of_the_day_ordinary() {

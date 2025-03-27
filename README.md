@@ -1,7 +1,7 @@
 # buongiornissimo-rs
 
 <p align="center">
-  <img src="docs/images/buongiornissimo-rs.png" width="256" height="256" />
+  <img src="docs/images/buongiornissimo-rs.png" alt="logo" width="256" height="256" />
 </p>
 
 <p align="center">~ Scrapes for the best Italian boomer flavoured images ~</p>
@@ -11,8 +11,8 @@
   <a href="https://docs.rs/buongiornissimo-rs" target="_blank">Documentation</a>
 </p>
 
-<p align="center">Developed by <a href="https://veeso.github.io/" target="_blank">@veeso</a></p>
-<p align="center">Current version: 0.2.1 (23/05/2023)</p>
+<p align="center">Developed by <a href="https://veeso.me" target="_blank">@veeso</a></p>
+<p align="center">Current version: 0.3.0 (23/05/2023)</p>
 
 <p align="center">
   <a href="https://opensource.org/licenses/MIT"
@@ -106,13 +106,13 @@ Supported features are:
 ### Scrape for buongiornissimo ☕
 
 ```rust
-use buongiornissimo_rs::{IlMondoDiGrazia, Scrape};
+use buongiornissimo_rs::{BuongiornissimoCaffe, Scrape};
 use chrono::Local;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     let motd = buongiornissimo_rs::greeting_of_the_day(Local::today().naive_local(), true);
-    let urls = IlMondoDiGrazia::default().scrape(motd).await?;
+    let urls = BuongiornissimoCaffe::default().scrape(motd).await?;
     // Do whatever you want with the scraped images...
     Ok(())
 }
@@ -121,7 +121,7 @@ async fn main() -> anyhow::Result<()> {
 Currently these providers are supported:
 
 - BuongiornissimoCaffe <https://www.buongiornissimocaffe.it>
-- IlMondoDiGrazia <https://ilmondodigrazia.com>
+- ~~IlMondoDiGrazia <https://ilmondodigrazia.com>~~: *currently disabled due to the website being down*
 
 ### Examples 🔍
 

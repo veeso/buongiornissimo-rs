@@ -1,16 +1,15 @@
-use buongiornissimo_rs::{BuongiornissimoCaffe, IlMondoDiGrazia, Scrape};
+use buongiornissimo_rs::{BuongiornissimoCaffe, Scrape};
 use chrono::Local;
 use rand::Rng;
 
 fn choice<T>(choices: &[T]) -> &T {
-    let mut rng = rand::thread_rng();
-    &choices[rng.gen_range(0..choices.len())]
+    let mut rng = rand::rng();
+    &choices[rng.random_range(0..choices.len())]
 }
 
 fn get_provider() -> Box<dyn Scrape> {
-    match *choice(&[0, 1]) {
+    match *choice(&[0]) {
         0 => Box::new(BuongiornissimoCaffe::default()),
-        1 => Box::new(IlMondoDiGrazia::default()),
         _ => panic!("out of range"),
     }
 }

@@ -1,8 +1,8 @@
 [package]
 name = "buongiornissimo-rs"
-version = "0.2.1"
+version = "0.3.0"
 authors = ["Christian Visintin <christian.visintin@veeso.dev>"]
-edition = "2021"
+edition = "2024"
 categories = ["web-programming"]
 description = "Scrapes for the best Italian boomer flavoured images"
 documentation = "https://docs.rs/buongiornissimo-rs"
@@ -18,27 +18,26 @@ async-trait = "^0.1"
 bdays = { version = "^0.1", optional = true }
 chrono = "^0.4"
 const_format = "^0.2"
-log = "^0.4"
-reqwest = "^0.11" 
-scraper = "^0.16"
-thiserror = "^1.0.0"
-url = "^2.2"
+reqwest = "^0.12"
+scraper = "^0.23"
+thiserror = "^2"
+tracing = "^0.1"
+url = "^2"
 
 [dev-dependencies]
 anyhow = "^1"
-pretty_assertions = "^1.2.1"
-open = "^4.1"
-rand = "0.8.5"
-serial_test = "^2"
-tokio = { version = "^1.20", features = [ "full" ] }
-tracing = "^0.1"
+pretty_assertions = "^1"
+open = "^5"
+rand = "0.9"
+serial_test = "^3"
+tokio = { version = "^1.44", features = ["full"] }
 tracing-subscriber = "^0.3"
 
 [features]
-default = [ "moveable-feasts" ]
-moveable-feasts = [ "bdays" ]
-github-ci = [ ]
-no-log = [ "log/max_level_off" ]
+default = ["moveable-feasts"]
+moveable-feasts = ["bdays"]
+github-ci = []
+no-log = ["tracing/max_level_off"]
 
 [[example]]
 name = "buongiornissimo"

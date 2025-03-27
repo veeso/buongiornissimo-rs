@@ -103,9 +103,9 @@ pub fn cuore_immacolato_di_maria_date(year: i32) -> NaiveDate {
 #[cfg(test)]
 mod test {
 
-    use super::*;
-
     use pretty_assertions::assert_eq;
+
+    use super::*;
 
     #[test]
     fn should_calc_easter_date() {

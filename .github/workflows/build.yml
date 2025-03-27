@@ -11,16 +11,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
-          override: true
           components: rustfmt, clippy
       - name: Run tests
-        uses: actions-rs/cargo@v1
-        with:
-          command: test
-          args: --lib --features github-ci,moveable-feasts --no-fail-fast
+        run: cargo test --lib --features github-ci,moveable-feasts --no-fail-fast
         env:
           RUST_LOG: trace
       - name: Format
