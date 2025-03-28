@@ -16,6 +16,7 @@ const BUONGIORNO_URL: &str = concatcp!(BASE_URL, "/immagini-buongiorno/");
 const BUONGIORNO_WEEKDAY_BASE_URL: &str = concatcp!(BASE_URL, "/buon-");
 const BUONA_DOMENICA_URL: &str = concatcp!(BASE_URL, "/buona-domenica/");
 const BUONA_NOTTE_URL: &str = concatcp!(BASE_URL, "/immagini-buonanotte/");
+const BUONA_SERATA_URL: &str = concatcp!(BASE_URL, "/buona-serata/");
 // festività
 const CAPODANNO_URL: &str = concatcp!(BASE_URL, "/buon-anno/");
 const BEFANA_URL: &str = concatcp!(BASE_URL, "/befana/");
@@ -36,7 +37,32 @@ const VIGILIA_URL: &str = concatcp!(BASE_URL, "/24-dicembre/");
 const NATALE_URL: &str = concatcp!(BASE_URL, "/buon-natale/");
 const SANTO_STEFANO_URL: &str = concatcp!(BASE_URL, "/santo-stefano/");
 
-/// Buongiornissimo provider which scrapes images from <https://www.buongiornissimocaffe.it>
+/// Buongiornissimo provider which scrapes images from <https://www.buongiornissimocaffe.it>.
+///
+/// Supported [`Greeting`]s:
+///
+/// - [`Greeting::BuonGiorno`]
+/// - [`Greeting::BuonGiornoWeekday`]
+/// - [`Greeting::BuonaSerata`]
+/// - [`Greeting::BuonaNotte`]
+/// - [`Greeting::Capodanno`]
+/// - [`Greeting::Epifania`]
+/// - [`Greeting::SanValentino`]
+/// - [`Greeting::GiovediGrasso`]
+/// - [`Greeting::MartediGrasso`]
+/// - [`Greeting::FestaDelleDonne`]
+/// - [`Greeting::DomenicaDellePalme`]
+/// - [`Greeting::Pasqua`]
+/// - [`Greeting::Pasquetta`]
+/// - [`Greeting::Liberazione`]
+/// - [`Greeting::FestaDeiLavoratori`]
+/// - [`Greeting::Halloween`]
+/// - [`Greeting::Ognissanti`]
+/// - [`Greeting::Defunti`]
+/// - [`Greeting::ImmacolataConcenzione`]
+/// - [`Greeting::VigiliaDiNatale`]
+/// - [`Greeting::Natale`]
+/// - [`Greeting::SantoStefano`]
 #[derive(Default)]
 pub struct BuongiornissimoCaffe;
 
@@ -62,6 +88,7 @@ impl BuongiornissimoCaffe {
                 BUONGIORNO_WEEKDAY_BASE_URL,
                 Self::weekday(weekday)
             )),
+            Greeting::BuonaSerata => Ok(BUONA_SERATA_URL.to_string()),
             Greeting::BuonaNotte => Ok(BUONA_NOTTE_URL.to_string()),
             Greeting::Capodanno => Ok(CAPODANNO_URL.to_string()),
             Greeting::Epifania => Ok(BEFANA_URL.to_string()),
@@ -83,6 +110,7 @@ impl BuongiornissimoCaffe {
             Greeting::SantoStefano => Ok(SANTO_STEFANO_URL.to_string()),
             Greeting::Compleanno
             | Greeting::BuonPomeriggio
+            | Greeting::BuonPranzo
             | Greeting::Pentecoste
             | Greeting::FestaDellaRepubblica
             | Greeting::CorpusDomini
@@ -91,6 +119,7 @@ impl BuongiornissimoCaffe {
             | Greeting::MercolediCeneri
             | Greeting::Ascensione
             | Greeting::SantissimaTrinita
+            | Greeting::BuonaCena
             | Greeting::CuoreImmacolatoDiMaria => Err(ScrapeError::UnsupportedGreeting),
         }
     }
