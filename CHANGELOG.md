@@ -10,7 +10,7 @@
 
 ## 0.3.0
 
-Released on ??
+Released on 28/03/2025
 
 - removed `IlMondoDiGrazia` provider since it's not working anymore
 - New providers:
