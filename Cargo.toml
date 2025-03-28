@@ -8,14 +8,7 @@ description = "Scrapes for the best Italian boomer flavoured images"
 documentation = "https://docs.rs/buongiornissimo-rs"
 homepage = "https://github.com/veeso/buongiornissimo-rs"
 include = ["examples/**/*", "src/**/*", "LICENSE", "README.md", "CHANGELOG.md"]
-keywords = [
-  "boomer",
-  "buongiornissimo",
-  "buongiorno",
-  "caffe",
-  "italian",
-  "scraper",
-]
+keywords = ["boomer", "buongiornissimo", "buongiorno", "italian", "scraper"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/veeso/buongiornissimo-rs"
