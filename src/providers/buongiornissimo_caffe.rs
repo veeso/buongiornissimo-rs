@@ -108,19 +108,7 @@ impl BuongiornissimoCaffe {
             Greeting::VigiliaDiNatale => Ok(VIGILIA_URL.to_string()),
             Greeting::Natale => Ok(NATALE_URL.to_string()),
             Greeting::SantoStefano => Ok(SANTO_STEFANO_URL.to_string()),
-            Greeting::Compleanno
-            | Greeting::BuonPomeriggio
-            | Greeting::BuonPranzo
-            | Greeting::Pentecoste
-            | Greeting::FestaDellaRepubblica
-            | Greeting::CorpusDomini
-            | Greeting::SacroCuoreDiGesu
-            | Greeting::Ferragosto
-            | Greeting::MercolediCeneri
-            | Greeting::Ascensione
-            | Greeting::SantissimaTrinita
-            | Greeting::BuonaCena
-            | Greeting::CuoreImmacolatoDiMaria => Err(ScrapeError::UnsupportedGreeting),
+            _ => Err(ScrapeError::UnsupportedGreeting),
         }
     }
 }

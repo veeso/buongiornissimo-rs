@@ -22,6 +22,7 @@ const BUONGIORNO_GIOVEDI_URL: &str = concatcp!(BASE_URL, "/buon-giorno-buon-giov
 const BUONGIORNO_VENERDI_URL: &str = concatcp!(BASE_URL, "/buon-giorno-buon-venerdi/");
 const BUONGIORNO_SABATO_URL: &str = concatcp!(BASE_URL, "/buon-giorno-buon-sabato/");
 const BUONGIORNO_DOMENICA_URL: &str = concatcp!(BASE_URL, "/buona-domenica/");
+const WEEKEND_URL: &str = concatcp!(BASE_URL, "/buon-weekend/");
 
 const BUON_PRANZO_URL: &str = concatcp!(BASE_URL, "/buon-pranzo/");
 const BUONA_NOTTE_URL: &str = concatcp!(BASE_URL, "/buonanotte/");
@@ -38,6 +39,7 @@ const BUONA_CENA_URL: &str = concatcp!(BASE_URL, "/buona-cena/");
 /// - [`Greeting::BuonaNotte`]
 /// - [`Greeting::BuonaSerata`]
 /// - [`Greeting::BuonaCena`]
+/// - [`Greeting::Weekend`]
 #[derive(Default)]
 pub struct BuongiornoImmagini;
 
@@ -52,6 +54,7 @@ impl BuongiornoImmagini {
             Greeting::BuonGiornoWeekday(Weekday::Thu) => Ok(BUONGIORNO_GIOVEDI_URL.to_string()),
             Greeting::BuonGiornoWeekday(Weekday::Fri) => Ok(BUONGIORNO_VENERDI_URL.to_string()),
             Greeting::BuonGiornoWeekday(Weekday::Sat) => Ok(BUONGIORNO_SABATO_URL.to_string()),
+            Greeting::Weekend => Ok(WEEKEND_URL.to_string()),
             Greeting::BuonPranzo => Ok(BUON_PRANZO_URL.to_string()),
             Greeting::BuonaNotte => Ok(BUONA_NOTTE_URL.to_string()),
             Greeting::BuonaSerata => Ok(BUONA_SERATA_URL.to_string()),
@@ -156,6 +159,17 @@ mod test {
         assert!(
             !BuongiornoImmagini::default()
                 .scrape(Greeting::BuonaCena)
+                .await
+                .unwrap()
+                .is_empty()
+        );
+    }
+
+    #[tokio::test]
+    async fn test_should_get_weekend() {
+        assert!(
+            !BuongiornoImmagini::default()
+                .scrape(Greeting::Weekend)
                 .await
                 .unwrap()
                 .is_empty()

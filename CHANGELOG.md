@@ -13,11 +13,22 @@
 Released on ??
 
 - removed `IlMondoDiGrazia` provider since it's not working anymore
-- New provider `BuongiornoImmagini`
+- New providers:
+- `BuongiornoImmagini` <https://www.buongiornoimmagini.it>
+- `Ticondivido` <https://ticondivido.it/>
 - New greetings:
   - `BuonaSerata`
   - `BuonaCena`
   - `BuonPomeriggio`
+  - `Weekend`
+  - `SanNicola`
+  - `SantAmbrogio`
+  - `SantaLucia`
+  - `SanSilvestro`
+  - `FestaDelPapa` (Not the pope, but the father's day)
+  - `FestaDellaMamma`
+  - `DueGiugno`
+- Added getter for festa della mamma `festa_della_mamma`
 
 ## 0.2.1
 
