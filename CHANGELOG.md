@@ -14,8 +14,9 @@ Released on ??
 
 - removed `IlMondoDiGrazia` provider since it's not working anymore
 - New providers:
-- `BuongiornoImmagini` <https://www.buongiornoimmagini.it>
-- `Ticondivido` <https://ticondivido.it/>
+  - `Augurando`: <https://augurando.it>
+  - `BuongiornoImmagini` <https://www.buongiornoimmagini.it>
+  - `Ticondivido` <https://ticondivido.it/>
 - New greetings:
   - `BuonaSerata`
   - `BuonaCena`

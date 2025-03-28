@@ -1,4 +1,6 @@
-use buongiornissimo_rs::{BuongiornissimoCaffe, BuongiornoImmagini, Scrape, TiCondivido};
+use buongiornissimo_rs::{
+    Augurando, BuongiornissimoCaffe, BuongiornoImmagini, Scrape, TiCondivido,
+};
 use chrono::Local;
 use rand::Rng;
 
@@ -8,10 +10,11 @@ fn choice<T>(choices: &[T]) -> &T {
 }
 
 fn get_provider() -> Box<dyn Scrape> {
-    match *choice(&[0, 1, 2]) {
+    match *choice(&[0, 1, 2, 3]) {
         0 => Box::new(BuongiornissimoCaffe::default()),
         1 => Box::new(BuongiornoImmagini::default()),
         2 => Box::new(TiCondivido::default()),
+        3 => Box::new(Augurando::default()),
         _ => panic!("out of range"),
     }
 }

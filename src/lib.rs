@@ -61,7 +61,7 @@ pub mod moveable_feasts;
 mod providers;
 
 // exports
-pub use providers::{BuongiornissimoCaffe, BuongiornoImmagini, TiCondivido};
+pub use providers::{Augurando, BuongiornissimoCaffe, BuongiornoImmagini, TiCondivido};
 
 /// Describes the Greeting type
 #[derive(Debug, Copy, Clone, Eq, PartialEq, Hash)]
@@ -180,6 +180,10 @@ pub fn greeting_of_the_day(date: NaiveDate, use_weekday: bool) -> Greeting {
             Greeting::DomenicaDellePalme
         }
         #[cfg(feature = "moveable-feasts")]
+        date if date == moveable_feasts::festa_della_mamma(date.year()) => {
+            Greeting::FestaDellaMamma
+        }
+        #[cfg(feature = "moveable-feasts")]
         date if date == moveable_feasts::easter_date(date.year()) => Greeting::Pasqua,
         #[cfg(feature = "moveable-feasts")]
         date if date == moveable_feasts::pasquetta_date(date.year()) => Greeting::Pasquetta,
@@ -208,10 +212,14 @@ pub fn greeting_of_the_day(date: NaiveDate, use_weekday: bool) -> Greeting {
         date if date.month() == 10 && date.day() == 31 => Greeting::Halloween,
         date if date.month() == 11 && date.day() == 1 => Greeting::Ognissanti,
         date if date.month() == 11 && date.day() == 2 => Greeting::Defunti,
+        date if date.month() == 12 && date.day() == 6 => Greeting::SanNicola,
+        date if date.month() == 12 && date.day() == 7 => Greeting::SantAmbrogio,
+        date if date.month() == 12 && date.day() == 13 => Greeting::SantaLucia,
         date if date.month() == 12 && date.day() == 8 => Greeting::ImmacolataConcenzione,
         date if date.month() == 12 && date.day() == 24 => Greeting::VigiliaDiNatale,
         date if date.month() == 12 && date.day() == 25 => Greeting::Natale,
         date if date.month() == 12 && date.day() == 26 => Greeting::SantoStefano,
+        date if date.month() == 12 && date.day() == 31 => Greeting::SanSilvestro,
         date if use_weekday => Greeting::BuonGiornoWeekday(date.weekday()),
         _ => Greeting::BuonGiorno,
     }
@@ -336,6 +344,15 @@ mod test {
 
     #[test]
     #[cfg(feature = "moveable-feasts")]
+    fn should_get_greeting_festa_della_mamma() {
+        assert_eq!(
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2025, 5, 11).unwrap(), true),
+            Greeting::FestaDellaMamma
+        );
+    }
+
+    #[test]
+    #[cfg(feature = "moveable-feasts")]
     fn should_get_greeting_of_the_day_trinita() {
         assert_eq!(
             greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 6, 4).unwrap(), true),
@@ -427,10 +444,42 @@ mod test {
     }
 
     #[test]
+    fn should_get_greeting_of_the_day_sannicola() {
+        assert_eq!(
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 12, 6).unwrap(), true),
+            Greeting::SanNicola
+        );
+    }
+
+    #[test]
+    fn should_get_greeting_of_the_day_santambrogio() {
+        assert_eq!(
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 12, 7).unwrap(), true),
+            Greeting::SantAmbrogio
+        );
+    }
+
+    #[test]
     fn should_get_greeting_of_the_day_immacolata() {
         assert_eq!(
             greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 12, 8).unwrap(), true),
             Greeting::ImmacolataConcenzione
+        );
+    }
+
+    #[test]
+    fn should_get_greeting_of_the_day_santa_lucia() {
+        assert_eq!(
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 12, 13).unwrap(), true),
+            Greeting::SantaLucia
+        );
+    }
+
+    #[test]
+    fn should_get_greeting_of_the_day_silvestro() {
+        assert_eq!(
+            greeting_of_the_day(NaiveDate::from_ymd_opt(2023, 12, 31).unwrap(), true),
+            Greeting::SanSilvestro
         );
     }
 

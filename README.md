@@ -120,6 +120,7 @@ async fn main() -> anyhow::Result<()> {
 
 Currently these providers are supported:
 
+- Augurando: <https://augurando.it>
 - BuongiornissimoCaffe <https://www.buongiornissimocaffe.it>
 - BuongiornoImmagini: <https://buongiornoimmagini.it>
 - Ticondivido: <https://ticondivido.it>
