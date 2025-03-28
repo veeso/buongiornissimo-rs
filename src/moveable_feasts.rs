@@ -3,13 +3,13 @@
 //! This module provides optional functions to get the date for the different Italian moveable feasts
 
 use bdays::easter::easter_naive_date;
-use chrono::NaiveDate;
+use chrono::{Datelike, NaiveDate};
 
 /// Return easter date
 ///
 /// panics if year is < 1582
 pub fn easter_date(year: i32) -> NaiveDate {
-    easter_naive_date(year).unwrap()
+    easter_naive_date(year).expect("Invalid date")
 }
 
 /// Return "domenica delle palme" date
@@ -100,6 +100,27 @@ pub fn cuore_immacolato_di_maria_date(year: i32) -> NaiveDate {
     corpus_domini + chrono::Duration::days(6)
 }
 
+/// Returns festa della mamma date for the provided year
+///
+/// It's the second Sunday of May
+pub fn festa_della_mamma(year: i32) -> NaiveDate {
+    let mut may = NaiveDate::from_ymd_opt(year, 5, 1).expect("Invalid date");
+
+    // keep increasing days until we have two sundays
+    let mut sunday_count = 0;
+    loop {
+        if may.weekday() == chrono::Weekday::Sun {
+            sunday_count += 1;
+        }
+        if sunday_count == 2 {
+            break;
+        }
+        may += chrono::Duration::days(1);
+    }
+
+    may
+}
+
 #[cfg(test)]
 mod test {
 
@@ -112,6 +133,14 @@ mod test {
         assert_eq!(
             easter_date(2023),
             NaiveDate::from_ymd_opt(2023, 4, 9).unwrap()
+        );
+    }
+
+    #[test]
+    fn test_should_get_festa_della_mamma() {
+        assert_eq!(
+            festa_della_mamma(2025),
+            NaiveDate::from_ymd_opt(2025, 5, 11).unwrap()
         );
     }
 

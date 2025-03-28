@@ -61,7 +61,7 @@ pub mod moveable_feasts;
 mod providers;
 
 // exports
-pub use providers::{BuongiornissimoCaffe, BuongiornoImmagini};
+pub use providers::{BuongiornissimoCaffe, BuongiornoImmagini, TiCondivido};
 
 /// Describes the Greeting type
 #[derive(Debug, Copy, Clone, Eq, PartialEq, Hash)]
@@ -69,6 +69,7 @@ pub enum Greeting {
     BuonGiorno,
     /// Buongiorno based on the weekday
     BuonGiornoWeekday(chrono::Weekday),
+    Weekend,
     BuonPomeriggio,
     BuonPranzo,
     BuonaNotte,
@@ -83,6 +84,8 @@ pub enum Greeting {
     MartediGrasso,
     MercolediCeneri,
     FestaDelleDonne,
+    FestaDelPapa,
+    FestaDellaMamma,
     DomenicaDellePalme,
     Pasqua,
     Pasquetta,
@@ -90,6 +93,7 @@ pub enum Greeting {
     FestaDeiLavoratori,
     Ascensione,
     Pentecoste,
+    DueGiugno,
     SantissimaTrinita,
     FestaDellaRepubblica,
     SacroCuoreDiGesu,
@@ -101,11 +105,19 @@ pub enum Greeting {
     Ognissanti,
     /// Refers to the 2nd of november
     Defunti,
+    /// 6 dicembre
+    SanNicola,
+    /// 7 dicembre
+    SantAmbrogio,
     /// 8 dicembre
     ImmacolataConcenzione,
+    /// 13 dicembre
+    SantaLucia,
     VigiliaDiNatale,
     Natale,
     SantoStefano,
+    /// 31 dicembre
+    SanSilvestro,
 }
 
 /// Scrape trait result
