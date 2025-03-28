@@ -61,7 +61,7 @@ pub mod moveable_feasts;
 mod providers;
 
 // exports
-pub use providers::BuongiornissimoCaffe;
+pub use providers::{BuongiornissimoCaffe, BuongiornoImmagini};
 
 /// Describes the Greeting type
 #[derive(Debug, Copy, Clone, Eq, PartialEq, Hash)]
@@ -70,7 +70,10 @@ pub enum Greeting {
     /// Buongiorno based on the weekday
     BuonGiornoWeekday(chrono::Weekday),
     BuonPomeriggio,
+    BuonPranzo,
     BuonaNotte,
+    BuonaSerata,
+    BuonaCena,
     Compleanno,
     // feasts
     Capodanno,

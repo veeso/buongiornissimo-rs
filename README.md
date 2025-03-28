@@ -121,6 +121,7 @@ async fn main() -> anyhow::Result<()> {
 Currently these providers are supported:
 
 - BuongiornissimoCaffe <https://www.buongiornissimocaffe.it>
+- BuongiornoImmagini: <https://buongiornoimmagini.it>
 - ~~IlMondoDiGrazia <https://ilmondodigrazia.com>~~: *currently disabled due to the website being down*
 
 ### Examples 🔍

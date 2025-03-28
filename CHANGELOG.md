@@ -13,6 +13,11 @@
 Released on ??
 
 - removed `IlMondoDiGrazia` provider since it's not working anymore
+- New provider `BuongiornoImmagini`
+- New greetings:
+  - `BuonaSerata`
+  - `BuonaCena`
+  - `BuonPomeriggio`
 
 ## 0.2.1
 
