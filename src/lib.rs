@@ -208,6 +208,7 @@ pub fn greeting_of_the_day(date: NaiveDate, use_weekday: bool) -> Greeting {
         date if date == moveable_feasts::cuore_immacolato_di_maria_date(date.year()) => {
             Greeting::CuoreImmacolatoDiMaria
         }
+        date if date.month() == 3 && date.day() == 19 => Greeting::FestaDelPapa,
         date if date.month() == 8 && date.day() == 15 => Greeting::Ferragosto,
         date if date.month() == 10 && date.day() == 31 => Greeting::Halloween,
         date if date.month() == 11 && date.day() == 1 => Greeting::Ognissanti,
@@ -223,6 +224,25 @@ pub fn greeting_of_the_day(date: NaiveDate, use_weekday: bool) -> Greeting {
         date if use_weekday => Greeting::BuonGiornoWeekday(date.weekday()),
         _ => Greeting::BuonGiorno,
     }
+}
+
+#[cfg(test)]
+pub fn test_log() {
+    use std::sync::Once;
+
+    use tracing_subscriber::fmt;
+
+    static INIT: Once = Once::new();
+
+    INIT.call_once(|| {
+        let subscriber = fmt::Subscriber::builder()
+            .with_max_level(tracing::Level::TRACE)
+            .with_test_writer()
+            .finish();
+
+        tracing::subscriber::set_global_default(subscriber)
+            .expect("Failed to set tracing subscriber");
+    });
 }
 
 #[cfg(test)]

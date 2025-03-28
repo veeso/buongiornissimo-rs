@@ -59,7 +59,7 @@ const SANTO_STEFANO_URL: &str = concatcp!(BASE_URL, "/santo-stefano-26-dicembre/
 const SAN_SILVESTRO_URL: &str = concatcp!(BASE_URL, "/immagini-vigilia-di-capodanno/");
 const SANTA_LUCIA_URL: &str = concatcp!(BASE_URL, "/immagini-santa-lucia/");
 
-/// Buongiornissimo provider which scrapes images from <https://ticondivido.it>
+/// Buongiornissimo provider which scrapes images from <https://augurando.it>
 ///
 /// Supported [`Greeting`]s:
 ///
@@ -179,7 +179,12 @@ impl Scrape for Augurando {
         let img_selector = Selector::parse("img").unwrap();
         let images = main.select(&img_selector);
         for image in images {
-            if let Some(Ok(url)) = image.value().attr("src").map(Url::from_str) {
+            if let Some(Ok(url)) = image
+                .value()
+                .attr("src")
+                .filter(|s| s.starts_with("http") || s.starts_with("https"))
+                .map(Url::from_str)
+            {
                 debug!("found image with url {}", url);
                 urls.push(url)
             }

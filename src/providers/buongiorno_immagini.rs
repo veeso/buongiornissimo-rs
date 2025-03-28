@@ -72,6 +72,7 @@ impl Scrape for BuongiornoImmagini {
         // send request
         let body = reqwest::get(&url).await?.text().await?;
         debug!("got body of length {}", body.len());
+        trace!("body: {}", body);
         // parse document
         let document = Html::parse_document(&body);
         debug!("html document parsed");
@@ -91,7 +92,12 @@ impl Scrape for BuongiornoImmagini {
         let img_selector = Selector::parse("img").unwrap();
         let images = main.select(&img_selector);
         for image in images {
-            if let Some(Ok(url)) = image.value().attr("src").map(Url::from_str) {
+            if let Some(Ok(url)) = image
+                .value()
+                .attr("data-src")
+                .filter(|s| s.starts_with("http") || s.starts_with("https"))
+                .map(Url::from_str)
+            {
                 debug!("found image with url {}", url);
                 urls.push(url)
             }
@@ -112,6 +118,7 @@ mod test {
 
     #[tokio::test]
     async fn should_get_goodmorning_images() {
+        crate::test_log();
         assert!(
             !BuongiornoImmagini::default()
                 .scrape(Greeting::BuonGiorno)
@@ -123,6 +130,7 @@ mod test {
 
     #[tokio::test]
     async fn test_should_get_buon_pranzo() {
+        crate::test_log();
         assert!(
             !BuongiornoImmagini::default()
                 .scrape(Greeting::BuonPranzo)
@@ -134,6 +142,7 @@ mod test {
 
     #[tokio::test]
     async fn test_should_get_buona_notte() {
+        crate::test_log();
         assert!(
             !BuongiornoImmagini::default()
                 .scrape(Greeting::BuonaNotte)
@@ -145,6 +154,7 @@ mod test {
 
     #[tokio::test]
     async fn test_should_get_buona_serata() {
+        crate::test_log();
         assert!(
             !BuongiornoImmagini::default()
                 .scrape(Greeting::BuonaSerata)
@@ -156,6 +166,7 @@ mod test {
 
     #[tokio::test]
     async fn test_should_get_buona_cena() {
+        crate::test_log();
         assert!(
             !BuongiornoImmagini::default()
                 .scrape(Greeting::BuonaCena)
@@ -167,6 +178,7 @@ mod test {
 
     #[tokio::test]
     async fn test_should_get_weekend() {
+        crate::test_log();
         assert!(
             !BuongiornoImmagini::default()
                 .scrape(Greeting::Weekend)
@@ -178,6 +190,7 @@ mod test {
 
     #[tokio::test]
     async fn should_get_weekday_images() {
+        crate::test_log();
         assert!(
             !BuongiornoImmagini::default()
                 .scrape(Greeting::BuonGiornoWeekday(Weekday::Mon))

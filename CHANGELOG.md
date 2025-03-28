@@ -1,12 +1,20 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [0.3.1](#031)
   - [0.3.0](#030)
   - [0.2.1](#021)
   - [0.2.0](#020)
   - [0.1.0](#010)
 
 ---
+
+## 0.3.1
+
+Released on 28/03/2025
+
+- filter out Non http sources when scraping
+- some sites use `data-src` instead of `src` for images, so we need to check for that too
 
 ## 0.3.0
 

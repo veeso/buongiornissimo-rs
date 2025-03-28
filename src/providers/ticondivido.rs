@@ -154,6 +154,7 @@ impl Scrape for TiCondivido {
         // send request
         let body = reqwest::get(&url).await?.text().await?;
         debug!("got body of length {}", body.len());
+        trace!("body: {}", body);
         // parse document
         let document = Html::parse_document(&body);
         debug!("html document parsed");
@@ -173,7 +174,12 @@ impl Scrape for TiCondivido {
         let img_selector = Selector::parse("img").unwrap();
         let images = main.select(&img_selector);
         for image in images {
-            if let Some(Ok(url)) = image.value().attr("src").map(Url::from_str) {
+            if let Some(Ok(url)) = image
+                .value()
+                .attr("data-src")
+                .filter(|s| s.starts_with("http") || s.starts_with("https"))
+                .map(Url::from_str)
+            {
                 debug!("found image with url {}", url);
                 urls.push(url)
             }
@@ -194,6 +200,7 @@ mod test {
 
     #[tokio::test]
     async fn test_buongiorno() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::BuonGiorno).await.unwrap();
         assert!(!urls.is_empty());
@@ -201,6 +208,7 @@ mod test {
 
     #[tokio::test]
     async fn test_buongiorno_weekday() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider
             .scrape(Greeting::BuonGiornoWeekday(Weekday::Mon))
@@ -211,6 +219,7 @@ mod test {
 
     #[tokio::test]
     async fn test_weekend() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::Weekend).await.unwrap();
         assert!(!urls.is_empty());
@@ -218,6 +227,7 @@ mod test {
 
     #[tokio::test]
     async fn test_buona_notte() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::BuonaNotte).await.unwrap();
         assert!(!urls.is_empty());
@@ -225,6 +235,7 @@ mod test {
 
     #[tokio::test]
     async fn test_buon_pomeriggio() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::BuonPomeriggio).await.unwrap();
         assert!(!urls.is_empty());
@@ -232,6 +243,7 @@ mod test {
 
     #[tokio::test]
     async fn test_buona_serata() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::BuonaSerata).await.unwrap();
         assert!(!urls.is_empty());
@@ -239,6 +251,7 @@ mod test {
 
     #[tokio::test]
     async fn test_compleanno() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::Compleanno).await.unwrap();
         assert!(!urls.is_empty());
@@ -246,6 +259,7 @@ mod test {
 
     #[tokio::test]
     async fn test_capodanno() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::Capodanno).await.unwrap();
         assert!(!urls.is_empty());
@@ -253,6 +267,7 @@ mod test {
 
     #[tokio::test]
     async fn test_epifania() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::Epifania).await.unwrap();
         assert!(!urls.is_empty());
@@ -260,6 +275,7 @@ mod test {
 
     #[tokio::test]
     async fn test_san_valentino() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::SanValentino).await.unwrap();
         assert!(!urls.is_empty());
@@ -267,6 +283,7 @@ mod test {
 
     #[tokio::test]
     async fn test_carnevale() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::GiovediGrasso).await.unwrap();
         assert!(!urls.is_empty());
@@ -274,6 +291,7 @@ mod test {
 
     #[tokio::test]
     async fn test_festa_delle_donne() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::FestaDelleDonne).await.unwrap();
         assert!(!urls.is_empty());
@@ -281,6 +299,7 @@ mod test {
 
     #[tokio::test]
     async fn test_festa_del_papa() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::FestaDelPapa).await.unwrap();
         assert!(!urls.is_empty());
@@ -288,6 +307,7 @@ mod test {
 
     #[tokio::test]
     async fn test_domenica_delle_palme() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::DomenicaDellePalme).await.unwrap();
         assert!(!urls.is_empty());
@@ -295,6 +315,7 @@ mod test {
 
     #[tokio::test]
     async fn test_pasqua() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::Pasqua).await.unwrap();
         assert!(!urls.is_empty());
@@ -302,6 +323,7 @@ mod test {
 
     #[tokio::test]
     async fn test_pasquetta() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::Pasquetta).await.unwrap();
         assert!(!urls.is_empty());
@@ -309,6 +331,7 @@ mod test {
 
     #[tokio::test]
     async fn test_liberazione() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::Liberazione).await.unwrap();
         assert!(!urls.is_empty());
@@ -316,6 +339,7 @@ mod test {
 
     #[tokio::test]
     async fn test_festa_dei_lavoratori() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::FestaDeiLavoratori).await.unwrap();
         assert!(!urls.is_empty());
@@ -323,6 +347,7 @@ mod test {
 
     #[tokio::test]
     async fn test_festa_della_mamma() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::FestaDellaMamma).await.unwrap();
         assert!(!urls.is_empty());
@@ -330,6 +355,7 @@ mod test {
 
     #[tokio::test]
     async fn test_due_giugno() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::DueGiugno).await.unwrap();
         assert!(!urls.is_empty());
@@ -337,6 +363,7 @@ mod test {
 
     #[tokio::test]
     async fn test_ferragosto() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::Ferragosto).await.unwrap();
         assert!(!urls.is_empty());
@@ -344,6 +371,7 @@ mod test {
 
     #[tokio::test]
     async fn test_halloween() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::Halloween).await.unwrap();
         assert!(!urls.is_empty());
@@ -351,6 +379,7 @@ mod test {
 
     #[tokio::test]
     async fn test_ognissanti() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::Ognissanti).await.unwrap();
         assert!(!urls.is_empty());
@@ -358,6 +387,7 @@ mod test {
 
     #[tokio::test]
     async fn test_defunti() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::Defunti).await.unwrap();
         assert!(!urls.is_empty());
@@ -365,6 +395,7 @@ mod test {
 
     #[tokio::test]
     async fn test_immacolata_concenzione() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider
             .scrape(Greeting::ImmacolataConcenzione)
@@ -375,6 +406,7 @@ mod test {
 
     #[tokio::test]
     async fn test_san_nicola() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::SanNicola).await.unwrap();
         assert!(!urls.is_empty());
@@ -382,6 +414,7 @@ mod test {
 
     #[tokio::test]
     async fn test_sant_ambrogio() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::SantAmbrogio).await.unwrap();
         assert!(!urls.is_empty());
@@ -389,6 +422,7 @@ mod test {
 
     #[tokio::test]
     async fn test_natale() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::Natale).await.unwrap();
         assert!(!urls.is_empty());
@@ -396,6 +430,7 @@ mod test {
 
     #[tokio::test]
     async fn test_santo_stefano() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::SantoStefano).await.unwrap();
         assert!(!urls.is_empty());
@@ -403,6 +438,7 @@ mod test {
 
     #[tokio::test]
     async fn test_san_silvestro() {
+        crate::test_log();
         let provider = TiCondivido::default();
         let urls = provider.scrape(Greeting::SanSilvestro).await.unwrap();
         assert!(!urls.is_empty());
