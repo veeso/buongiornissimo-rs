@@ -1,2 +1,8 @@
 /target
 /Cargo.lock
+*.swp
+.superpowers/
+.idea/
+.claude/
+.DS_Store
+lcov.info
