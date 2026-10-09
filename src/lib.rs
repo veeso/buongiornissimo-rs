@@ -61,7 +61,7 @@ pub mod moveable_feasts;
 mod providers;
 
 // exports
-pub use providers::{Augurando, BuongiornissimoCaffe, BuongiornoImmagini, TiCondivido};
+pub use providers::{Augurando, BuongiornissimoCaffe, TiCondivido};
 
 /// Describes the Greeting type
 #[derive(Debug, Copy, Clone, Eq, PartialEq, Hash)]

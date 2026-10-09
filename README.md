@@ -122,7 +122,6 @@ Currently these providers are supported:
 
 - Augurando: <https://augurando.it>
 - BuongiornissimoCaffe <https://www.buongiornissimocaffe.it>
-- BuongiornoImmagini: <https://buongiornoimmagini.it>
 - Ticondivido: <https://ticondivido.it>
 - ~~IlMondoDiGrazia <https://ilmondodigrazia.com>~~: *currently disabled due to the website being down*
 
