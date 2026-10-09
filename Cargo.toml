@@ -2,42 +2,42 @@
 name = "buongiornissimo-rs"
 version = "0.3.1"
 authors = ["Christian Visintin <christian.visintin@veeso.dev>"]
-edition = "2024"
 categories = ["web-programming"]
-description = "Scrapes for the best Italian boomer flavoured images"
 documentation = "https://docs.rs/buongiornissimo-rs"
+edition = "2024"
 homepage = "https://github.com/veeso/buongiornissimo-rs"
 include = ["examples/**/*", "src/**/*", "LICENSE", "README.md", "CHANGELOG.md"]
 keywords = ["boomer", "buongiornissimo", "buongiorno", "italian", "scraper"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/veeso/buongiornissimo-rs"
-
-[dependencies]
-async-trait = "^0.1"
-bdays = { version = "^0.1", optional = true }
-chrono = "^0.4"
-const_format = "^0.2"
-reqwest = "^0.12"
-scraper = "^0.23"
-thiserror = "^2"
-tracing = "^0.1"
-url = "^2"
-
-[dev-dependencies]
-anyhow = "^1"
-pretty_assertions = "^1"
-open = "^5"
-rand = "0.9"
-serial_test = "^3"
-tokio = { version = "^1.44", features = ["full"] }
-tracing-subscriber = "^0.3"
+description = "Scrapes for the best Italian boomer flavoured images"
 
 [features]
 default = ["moveable-feasts"]
-moveable-feasts = ["bdays"]
 github-ci = []
+moveable-feasts = ["dep:bdays"]
 no-log = ["tracing/max_level_off"]
+
+[dependencies]
+async-trait = "0.1"
+bdays = { version = "0.1", optional = true }
+chrono = "0.4"
+const_format = "0.2"
+reqwest = "0.12"
+scraper = "0.23"
+thiserror = "2"
+tracing = "0.1"
+url = "2"
+
+[dev-dependencies]
+anyhow = "1"
+open = "5"
+pretty_assertions = "1"
+rand = "0.9"
+serial_test = "3"
+tokio = { version = "1.44", features = ["full"] }
+tracing-subscriber = "0.3"
 
 [[example]]
 name = "buongiornissimo"
