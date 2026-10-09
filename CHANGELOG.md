@@ -1,64 +1,79 @@
 # Changelog
 
-- [Changelog](#changelog)
-  - [0.3.1](#031)
-  - [0.3.0](#030)
-  - [0.2.1](#021)
-  - [0.2.0](#020)
-  - [0.1.0](#010)
+All notable changes to this project are documented in this file.
 
----
+## 0.4.0
+
+Released on 2026-10-09
+
+### Breaking changes
+
+- remove BuongiornoImmagini provider
+
+> `BuongiornoImmagini` is removed from the public API.
+
+### Changed
+
+- Breaking: remove BuongiornoImmagini provider
+
+> The buongiornoimmagini.it domain was re-registered and now redirects to a
+> domain auction page, so the provider can no longer scrape any image.
+
+### Build
+
+- lint Cargo.toml and use dep: syntax for bdays
+
+- **deps:** bump dependencies to latest versions
+
+> Upgrade reqwest to 0.13, scraper to 0.27, rand to 0.10, serial_test to 4
+> and tokio to 1.53. The example now imports rand::RngExt.
+
+### Style
+
+- apply clippy fixes and dprint formatting
 
 ## 0.3.1
 
-Released on 28/03/2025
+Released on 2025-03-28
 
-- filter out Non http sources when scraping
-- some sites use `data-src` instead of `src` for images, so we need to check for that too
+### Fixed
+
+- filter out non http; use data-src
 
 ## 0.3.0
 
-Released on 28/03/2025
+Released on 2025-03-28
 
-- removed `IlMondoDiGrazia` provider since it's not working anymore
-- New providers:
-  - `Augurando`: <https://augurando.it>
-  - `BuongiornoImmagini` <https://www.buongiornoimmagini.it>
-  - `Ticondivido` <https://ticondivido.it/>
-- New greetings:
-  - `BuonaSerata`
-  - `BuonaCena`
-  - `BuonPomeriggio`
-  - `Weekend`
-  - `SanNicola`
-  - `SantAmbrogio`
-  - `SantaLucia`
-  - `SanSilvestro`
-  - `FestaDelPapa` (Not the pope, but the father's day)
-  - `FestaDellaMamma`
-  - `DueGiugno`
-- Added getter for festa della mamma `festa_della_mamma`
+### Breaking changes
+
+- removed IlMondoDiGrazia since it seems to be down
+
+> IlMondoDiGrazia has been removedà
+
+### Added
+
+- Breaking: removed IlMondoDiGrazia since it seems to be down
+
+- new provider: BuongiornoImmagini; new Greetings BuonaSerata, BuonPranzo, BuonaCena
+
+- new provider: BuongiornoImmagini; new Greetings BuonaSerata, BuonPranzo, BuonaCena (#1)
+
+- ticondivido.it provider (#2)
+
+- Augurando provider
 
 ## 0.2.1
 
-Released on 23/05/2023
+Released on 2023-05-23
 
-- Derive `Hash` for greeting.
-- Deps updated
+### Added
 
-## 0.2.0
+- Derive `Hash` for greeting
 
-Released on 12/09/2022
+### Fixed
 
-- Added new greetings
-  - san valentino
-  - festa della donna
-  - domenica delle palme
-  - santo stefano
-- added `BuongiornissimoCaffe` provider from <https://www.buongiornissimocaffe.it>
+- release date
 
 ## 0.1.0
 
-Released on 12/09/2022
-
-- First release
+Released on 2022-09-12

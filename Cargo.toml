@@ -1,6 +1,6 @@
 [package]
 name = "buongiornissimo-rs"
-version = "0.3.1"
+version = "0.4.0"
 authors = ["Christian Visintin <christian.visintin@veeso.dev>"]
 categories = ["web-programming"]
 documentation = "https://docs.rs/buongiornissimo-rs"
