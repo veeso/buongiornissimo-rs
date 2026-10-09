@@ -85,7 +85,7 @@ It supports different buongiornissimo providers to scrape the images from. It su
 
 - Different providers to prevent api outages and to differentiate the contents.
 - Support for different kind of greetings based on the current date
-- Utilities functions to retrieve the moveable feasts date (such as Easter, Carnival, Corpus domini...). *requires the `moveable-feasts` feature*
+- Utilities functions to retrieve the moveable feasts date (such as Easter, Carnival, Corpus domini...). _requires the `moveable-feasts` feature_
 - A super comfy function `greeting_of_the_day()` to retrieve the best greeting for the day
 
 ---
@@ -101,7 +101,7 @@ buongiornissimo-rs = "^0.2.0"
 Supported features are:
 
 - `no-log`: disable logging
-- `moveable-feasts` (*default*): enable getters for moveable feasts
+- `moveable-feasts` (_default_): enable getters for moveable feasts
 
 ### Scrape for buongiornissimo ☕
 
@@ -123,7 +123,7 @@ Currently these providers are supported:
 - Augurando: <https://augurando.it>
 - BuongiornissimoCaffe <https://www.buongiornissimocaffe.it>
 - Ticondivido: <https://ticondivido.it>
-- ~~IlMondoDiGrazia <https://ilmondodigrazia.com>~~: *currently disabled due to the website being down*
+- ~~IlMondoDiGrazia <https://ilmondodigrazia.com>~~: _currently disabled due to the website being down_
 
 ### Examples 🔍
 

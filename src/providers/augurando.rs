@@ -205,21 +205,21 @@ mod test {
 
     #[tokio::test]
     async fn test_buongiorno() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::BuonGiorno).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_buon_pranzo() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::BuonPranzo).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_buongiorno_weekday() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider
             .scrape(Greeting::BuonGiornoWeekday(Weekday::Mon))
             .await
@@ -229,161 +229,161 @@ mod test {
 
     #[tokio::test]
     async fn test_weekend() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::Weekend).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_buona_notte() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::BuonaNotte).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_buon_pomeriggio() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::BuonPomeriggio).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_buona_serata() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::BuonaSerata).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_compleanno() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::Compleanno).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_capodanno() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::Capodanno).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_epifania() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::Epifania).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_san_valentino() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::SanValentino).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_carnevale() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::GiovediGrasso).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_festa_delle_donne() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::FestaDelleDonne).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_festa_del_papa() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::FestaDelPapa).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_domenica_delle_palme() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::DomenicaDellePalme).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_pasqua() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::Pasqua).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_pasquetta() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::Pasquetta).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_liberazione() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::Liberazione).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_festa_dei_lavoratori() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::FestaDeiLavoratori).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_festa_della_mamma() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::FestaDellaMamma).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_due_giugno() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::DueGiugno).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_ferragosto() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::Ferragosto).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_halloween() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::Halloween).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_ognissanti() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::Ognissanti).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_defunti() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::Defunti).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_immacolata_concenzione() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider
             .scrape(Greeting::ImmacolataConcenzione)
             .await
@@ -393,35 +393,35 @@ mod test {
 
     #[tokio::test]
     async fn test_san_nicola() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::SanNicola).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_sant_ambrogio() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::SantAmbrogio).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_natale() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::Natale).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_santo_stefano() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::SantoStefano).await.unwrap();
         assert!(!urls.is_empty());
     }
 
     #[tokio::test]
     async fn test_san_silvestro() {
-        let provider = Augurando::default();
+        let provider = Augurando;
         let urls = provider.scrape(Greeting::SanSilvestro).await.unwrap();
         assert!(!urls.is_empty());
     }

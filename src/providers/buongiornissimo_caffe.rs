@@ -184,7 +184,7 @@ mod test {
 
     async fn should_get_goodmorning_images() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::BuonGiorno)
                 .await
                 .unwrap()
@@ -195,49 +195,49 @@ mod test {
     #[tokio::test]
     async fn should_get_weekday_images() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::BuonGiornoWeekday(Weekday::Mon))
                 .await
                 .unwrap()
                 .is_empty()
         );
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::BuonGiornoWeekday(Weekday::Tue))
                 .await
                 .unwrap()
                 .is_empty()
         );
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::BuonGiornoWeekday(Weekday::Wed))
                 .await
                 .unwrap()
                 .is_empty()
         );
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::BuonGiornoWeekday(Weekday::Thu))
                 .await
                 .unwrap()
                 .is_empty()
         );
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::BuonGiornoWeekday(Weekday::Fri))
                 .await
                 .unwrap()
                 .is_empty()
         );
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::BuonGiornoWeekday(Weekday::Sat))
                 .await
                 .unwrap()
                 .is_empty()
         );
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::BuonGiornoWeekday(Weekday::Sun))
                 .await
                 .unwrap()
@@ -248,7 +248,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_buona_notte() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::BuonaNotte)
                 .await
                 .unwrap()
@@ -259,7 +259,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_capodanno() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::Capodanno)
                 .await
                 .unwrap()
@@ -270,7 +270,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_epifania() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::Epifania)
                 .await
                 .unwrap()
@@ -281,7 +281,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_san_valentino() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::SanValentino)
                 .await
                 .unwrap()
@@ -292,7 +292,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_giovedi_grasso() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::GiovediGrasso)
                 .await
                 .unwrap()
@@ -303,7 +303,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_martedi_grasso() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::MartediGrasso)
                 .await
                 .unwrap()
@@ -314,7 +314,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_festa_delle_donne() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::FestaDelleDonne)
                 .await
                 .unwrap()
@@ -325,7 +325,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_domenica_delle_palme() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::DomenicaDellePalme)
                 .await
                 .unwrap()
@@ -336,7 +336,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_pasqua() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::Pasqua)
                 .await
                 .unwrap()
@@ -347,7 +347,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_pasquetta() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::Pasquetta)
                 .await
                 .unwrap()
@@ -358,7 +358,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_liberazione() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::Liberazione)
                 .await
                 .unwrap()
@@ -369,7 +369,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_festa_dei_lavoratori() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::FestaDeiLavoratori)
                 .await
                 .unwrap()
@@ -380,7 +380,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_halloween() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::Halloween)
                 .await
                 .unwrap()
@@ -391,7 +391,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_ognissanti() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::Ognissanti)
                 .await
                 .unwrap()
@@ -402,7 +402,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_defunti() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::Defunti)
                 .await
                 .unwrap()
@@ -413,7 +413,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_immacolata_concenzione() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::ImmacolataConcenzione)
                 .await
                 .unwrap()
@@ -424,7 +424,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_vigilia_di_natale() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::VigiliaDiNatale)
                 .await
                 .unwrap()
@@ -435,7 +435,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_natale() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::Natale)
                 .await
                 .unwrap()
@@ -446,7 +446,7 @@ mod test {
     #[tokio::test]
     async fn should_scrape_for_greeting_santo_stefano() {
         assert!(
-            !BuongiornissimoCaffe::default()
+            !BuongiornissimoCaffe
                 .scrape(Greeting::SantoStefano)
                 .await
                 .unwrap()
@@ -457,7 +457,7 @@ mod test {
     #[tokio::test]
     async fn should_not_scrape_for_greeting_compleanno() {
         assert_eq!(
-            BuongiornissimoCaffe::default()
+            BuongiornissimoCaffe
                 .scrape(Greeting::Compleanno)
                 .await
                 .err()
@@ -469,7 +469,7 @@ mod test {
     #[tokio::test]
     async fn should_not_scrape_for_greeting_buon_pomeriggio() {
         assert_eq!(
-            BuongiornissimoCaffe::default()
+            BuongiornissimoCaffe
                 .scrape(Greeting::BuonPomeriggio)
                 .await
                 .err()
@@ -481,7 +481,7 @@ mod test {
     #[tokio::test]
     async fn should_not_scrape_for_greeting_pentecoste() {
         assert_eq!(
-            BuongiornissimoCaffe::default()
+            BuongiornissimoCaffe
                 .scrape(Greeting::Pentecoste)
                 .await
                 .err()
@@ -493,7 +493,7 @@ mod test {
     #[tokio::test]
     async fn should_not_scrape_for_greeting_festa_della_repubblica() {
         assert_eq!(
-            BuongiornissimoCaffe::default()
+            BuongiornissimoCaffe
                 .scrape(Greeting::FestaDellaRepubblica)
                 .await
                 .err()
@@ -505,7 +505,7 @@ mod test {
     #[tokio::test]
     async fn should_not_scrape_for_greeting_corpus_domini() {
         assert_eq!(
-            BuongiornissimoCaffe::default()
+            BuongiornissimoCaffe
                 .scrape(Greeting::CorpusDomini)
                 .await
                 .err()
@@ -517,7 +517,7 @@ mod test {
     #[tokio::test]
     async fn should_not_scrape_for_greeting_sacro_cuore_di_gesu() {
         assert_eq!(
-            BuongiornissimoCaffe::default()
+            BuongiornissimoCaffe
                 .scrape(Greeting::SacroCuoreDiGesu)
                 .await
                 .err()
@@ -529,7 +529,7 @@ mod test {
     #[tokio::test]
     async fn should_not_scrape_for_greeting_ferragosto() {
         assert_eq!(
-            BuongiornissimoCaffe::default()
+            BuongiornissimoCaffe
                 .scrape(Greeting::Ferragosto)
                 .await
                 .err()
@@ -541,7 +541,7 @@ mod test {
     #[tokio::test]
     async fn should_not_scrape_for_greeting_mercoledi_ceneri() {
         assert_eq!(
-            BuongiornissimoCaffe::default()
+            BuongiornissimoCaffe
                 .scrape(Greeting::MercolediCeneri)
                 .await
                 .err()
@@ -553,7 +553,7 @@ mod test {
     #[tokio::test]
     async fn should_not_scrape_for_greeting_ascensione() {
         assert_eq!(
-            BuongiornissimoCaffe::default()
+            BuongiornissimoCaffe
                 .scrape(Greeting::Ascensione)
                 .await
                 .err()
@@ -565,7 +565,7 @@ mod test {
     #[tokio::test]
     async fn should_not_scrape_for_greeting_santissima_trinita() {
         assert_eq!(
-            BuongiornissimoCaffe::default()
+            BuongiornissimoCaffe
                 .scrape(Greeting::SantissimaTrinita)
                 .await
                 .err()
@@ -577,7 +577,7 @@ mod test {
     #[tokio::test]
     async fn should_not_scrape_for_greeting_cuore_immacolato_di_maria() {
         assert_eq!(
-            BuongiornissimoCaffe::default()
+            BuongiornissimoCaffe
                 .scrape(Greeting::CuoreImmacolatoDiMaria)
                 .await
                 .err()
