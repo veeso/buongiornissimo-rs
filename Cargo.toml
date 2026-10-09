@@ -24,8 +24,8 @@ async-trait = "0.1"
 bdays = { version = "0.1", optional = true }
 chrono = "0.4"
 const_format = "0.2"
-reqwest = "0.12"
-scraper = "0.23"
+reqwest = "0.13"
+scraper = "0.27"
 thiserror = "2"
 tracing = "0.1"
 url = "2"
@@ -34,9 +34,9 @@ url = "2"
 anyhow = "1"
 open = "5"
 pretty_assertions = "1"
-rand = "0.9"
-serial_test = "3"
-tokio = { version = "1.44", features = ["full"] }
+rand = "0.10"
+serial_test = "4"
+tokio = { version = "1.53", features = ["full"] }
 tracing-subscriber = "0.3"
 
 [[example]]

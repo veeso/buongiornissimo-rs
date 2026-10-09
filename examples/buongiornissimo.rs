@@ -1,6 +1,6 @@
 use buongiornissimo_rs::{Augurando, BuongiornissimoCaffe, Scrape, TiCondivido};
 use chrono::Local;
-use rand::Rng;
+use rand::RngExt;
 
 fn choice<T>(choices: &[T]) -> &T {
     let mut rng = rand::rng();
